@@ -1,0 +1,154 @@
+@font-face {
+    font-family: univers;
+    src: url(../font/univers/UniversLTStd.otf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: univers;
+    src: url(../font/univers/UniversLTStd-Light.otf);
+    font-weight: 100;
+}
+@font-face {
+    font-family: univers;
+    src: url(../font/univers/UniversLTStd-Bold.otf);
+    font-weight: bold;
+}
+body {
+    font-family: univers;
+}
+a, a:hover {
+    text-decoration: none;
+}
+.btn {
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    background: #f53812;
+    width: 70px;
+    height: 25px;
+    text-align: center;
+}
+.flex-container {
+    display: flex;
+}
+
+.tm-container-large {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.contact-form {
+    max-width: 400px;
+}
+.contact-form h5 {
+    font-size: 14px;
+}
+.contact-form form input {
+    width: 95%;
+    border: none;
+    border-bottom: solid 1px #d0d0d0;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.contact-form form input:focus {
+    outline-color: white;
+}
+.contact-form form .btn-send {
+    width: 60px;
+    float: right;
+    border-radius: 16px;
+}
+.contact-form form .btn-send:hover {
+    color: white;
+}
+.contact-form .description {
+    font-size: 11px;
+    line-height: 20px;
+}
+.blog-container {
+    width: 100%;
+    padding-right: 100px;
+}
+
+.blog-list {
+    margin-right: 100px;
+}
+
+.blog-image-container {
+    position: relative;
+    padding-bottom: 50%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.blog-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.blog-image img {
+    width: 100%;
+    height: auto;
+}
+
+.blog-content {
+    position: relative;
+    margin: -70px 70px 0 70px;
+    z-index: 2;
+    background: white;
+    padding: 30px 40px;
+}
+
+.article-title {
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: -1px;
+    color: #3e3e3e;
+}
+
+.article-content {
+    font-size: 11px;
+    line-height: 20px;
+    letter-spacing: -0.7px;
+    color: #676767;
+}
+
+.blog-header {
+    position: relative;
+}
+
+.blog-header .action {
+    position: absolute;
+    width: 70px;
+    top: 100%;
+    right: 0;
+}
+.action p {
+    text-align: center;
+    font-weight: bold;
+}
+.action .btn {
+    text-transform: uppercase;
+}
+.action .date {
+    font-size: 30px;
+    margin-bottom: 0;
+    color: #a1a1a1;
+}
+
+.action .month-year {
+    font-size: 9px;
+    margin-top: 0;
+    color: #a1a1a1;
+}
+.uk-article+.uk-article {
+    border-top: none;
+}
+
+@media (min-width: 768px) {
+    .uk-article+.uk-article {
+        margin-top: 70px;
+        padding-top: 0;
+    }
+}
