@@ -15,6 +15,7 @@
 }
 body {
     font-family: univers;
+    overflow: hidden;
 }
 a, a:hover {
     text-decoration: none;
@@ -37,6 +38,9 @@ a, a:hover {
     margin: auto;
 }
 
+.uk-container {
+    padding: 0 50px;
+}
 .contact-form {
     max-width: 400px;
 }
@@ -48,7 +52,8 @@ a, a:hover {
     border: none;
     border-bottom: solid 1px #d0d0d0;
     padding: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 11px;
 }
 .contact-form form input:focus {
     outline-color: white;
@@ -85,6 +90,7 @@ a, a:hover {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
 }
 
 .blog-image img {
@@ -145,10 +151,285 @@ a, a:hover {
 .uk-article+.uk-article {
     border-top: none;
 }
+.ads {
+    margin-top: 100px;
+}
+.ads .article-image {
+    margin-top: 20px;
+}
+.pagination-container {
+    position: relative;
 
+}
+.pagination-container .uk-pagination {
+    padding: 0 20px;
+    display: inline-block;
+    background: white;
+    position: relative;
+    z-index: 2;
+}
+.pagination-container .sticker {
+    position: absolute;
+    width: 200vw;
+    height: 1px;
+    background: #d9d9d9;
+    left: -100vw;
+    z-index: 1;
+    bottom: 42px;
+}
+.pagination-container .uk-pagination>.uk-active>span {
+    color: #f53812;
+}
+.pagination-container .uk-pagination>li>a {
+    color: #a1a1a1;
+}
+.pagination-container .uk-pagination>li {
+    font-size: 14px;
+}
+.blog-detail-container {
+
+}
+.blog-detail-container .blog-header {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    background-image: url(../img/blog_back.jpg);
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 400px;
+    z-index: 1;
+}
+.blog-detail-container .blog-detail {
+    margin-top: -50px;
+    z-index: 2;
+}
+.blog-detail-container article {
+    max-width: 900px;
+}
+.blog-header .link-container {
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    margin: auto;
+    position: relative;
+}
+.blog-header .link {
+    position: absolute;
+    bottom: 25px;
+    max-width: 200px;
+    width: 100%;
+}
+.blog-header .link p {
+    margin: 0;
+    font-size: 14px;
+}
+.blog-header .link .date {
+    margin-bottom: 10px;
+}
+.blog-header .link .content {
+    line-height: 18px;
+    margin-bottom: 15px;
+    color: white;
+}
+.icon {
+    width: 30px;
+    height: 30px;
+    background-position: 0 0 ;
+    background-size: 30px 30px;
+}
+.icon-left {
+    background-image: url('../img/left.png');
+}
+.icon-right {
+    background-image: url('../img/right.png');
+}
+.icon-comment {
+    background-image: url('../img/comment.png');
+    background-position: 0 -3px;
+}
+.blog-header .link .icon-left {
+    float: right;
+}
+.blog-header .link .icon-right {
+    float: left;
+}
+.blog-header .left-link {
+    right: 100%;
+    text-align: right;
+}
+.blog-header .right-link {
+    left: 100%;
+    text-align: left;
+}
+.blog-detail .uk-article-title {
+    font-size: 35px;
+    width: 50%;
+    margin-bottom: 40px;
+}
+.blog-detail .blog-detail-stick {
+    width: 100%;
+    height: 2px;
+    background: #e5e5e5;
+}
+.blog-detail .blog-detail-stick:before {
+    content: '';
+    background: #a0a0a0;
+    width: 150px;
+    height: 2px;
+    float: left;
+}
+.blog-detail .blog-detail-content {
+    padding: 45px 0 0 40px;
+    display: inline-flex;
+}
+.blog-meta {
+    margin-right: 150px;
+    text-align: right;
+}
+.blog-meta p {
+    margin: 0;
+}
+.blog-meta .date {
+    width: 150px;
+    font-size: 16px;
+}
+.blog-meta .author {
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+.blog-meta .n-comments {
+    font-size: 16px;
+    color: #69c4d7;
+    display: inline-flex;
+}
+.blog-meta .author span {
+    color: #69c4d7;
+}
+.blog-detail .contact-form-space {
+    width: 100%;
+    height: 500px;
+    margin-top: 150px;
+    position: relative;
+}
+.blog-detail .contact-form-container {
+    width: 100vw;
+    height: 500px;
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+    background-image: url('../img/blog_contact_back.jpg');
+    background-size: auto auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+
+}
+.contact-form-container .label h2 {
+    font-size: 30px;
+    color: white;
+}
+.contact-form-container .label p {
+    font-size: 18px;
+    color: white;
+}
+.wrap-container {
+    width: 100%;
+    max-width: 1020px;
+    margin: auto;
+}
+.wrap-container > div {
+    box-sizing: border-box;
+    padding: 120px 60px;
+    width: 50%;
+    float: left;
+}
+.contact-form-space .contact-form-effect {
+    box-shadow: 0 0 50px 5px #888;
+    z-index: 1;
+}
+.blog-detail .contact-form {
+    background: white;
+    padding: 80px 50px;
+}
+.blog-detail .contact-form h2 {
+    font-size: 38px;
+    color: #f53812;
+    margin-bottom: 10px;
+}
+.blog-detail .contact-form p {
+    margin: 0 0 35px 0;
+}
+.blog-detail .contact-form form input {
+    margin-bottom: 20px;
+    color: #636363;
+}
+.blog-detail .contact-form form input::-webkit-input-placeholder {
+    color: #636363;
+}
+.blog-detail .contact-form form input:-moz-placeholder {
+    color: #636363;
+    opacity:  1;
+}
+.blog-detail .contact-form form input::-moz-placeholder {
+    color: #636363;
+    opacity:  1;
+}
+.blog-detail .contact-form form input:-ms-input-placeholder {
+    color: #636363;
+}
+.label .phone-image {
+    position: absolute;
+    left: 0;
+    padding: 25px 30px 40px 120px;
+    box-sizing: border-box;
+    width: 50%;
+}
+.blog-detail .contact-form form .btn-send {
+    margin-top: 50px;
+    font-size: 13px;
+    padding: 4px 15px;
+    line-height: 29px;
+    width: initial;
+}
+.absolute-dialog {
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    left: calc(50% + 60px);
+    top: -50px;
+
+}
+.uk-comment-primary {
+    background: white;
+}
+.blog-detail #comments {
+    margin-top: 200px;
+}
 @media (min-width: 768px) {
     .uk-article+.uk-article {
         margin-top: 70px;
         padding-top: 0;
+    }
+}
+@media (max-width: 1440px) {
+    .blog-header .link .date, .blog-header .link .content {
+        display: none;
+    }
+}
+@media (max-width: 1024px) {
+    .blog-header .link {
+        width: initial;
+    }
+    .blog-header .left-link {
+        top: 10px;
+        left: 80px;
+
+    }
+    .blog-header .right-link {
+        top: 10px;
+        left: 100px;
+
     }
 }

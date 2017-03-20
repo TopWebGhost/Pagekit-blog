@@ -47,54 +47,10 @@
         </article>
         <?php endforeach ?>
 
-        <?php
-
-            $range     = 3;
-            $total     = intval($total);
-            $page      = intval($page);
-            $pageIndex = $page - 1;
-
-        ?>
-
-        <?php if ($total > 1) : ?>
-        <ul class="uk-pagination">
-
-
-            <?php for($i=1;$i<=$total;$i++): ?>
-                <?php if ($i <= ($pageIndex+$range) && $i >= ($pageIndex-$range)): ?>
-
-                    <?php if ($i == $page): ?>
-                    <li class="uk-active"><span><?=$i?></span></li>
-                    <?php else: ?>
-                    <li>
-                        <a href="<?= $view->url('@blog/page', ['page' => $i]) ?>"><?=$i?></a>
-                    <li>
-                    <?php endif; ?>
-
-                <?php elseif($i==1): ?>
-
-                    <li>
-                        <a href="<?= $view->url('@blog/page', ['page' => 1]) ?>">1</a>
-                    </li>
-                    <li><span>...</span></li>
-
-                <?php elseif($i==$total): ?>
-
-                    <li><span>...</span></li>
-                    <li>
-                        <a href="<?= $view->url('@blog/page', ['page' => $total]) ?>"><?=$total?></a>
-                    </li>
-
-                <?php endif; ?>
-            <?php endfor; ?>
-
-
-        </ul>
-        <?php endif ?>
     </div>
     <div class="contact-form">
         <h5>We always respond within 24hours</h5>
-        <p class="description">If you have a question, comment or an idea, we'd love to hear from you. Fill out this form and you'll hear from us promptly!
+        <p class="description">If you have a question, comment or an idea, we'd love to hear from you. Fill out this form and you'll hear from us promptly!</p>
 
         <form>
             <input type="text" name="name" placeholder="Name *">
@@ -111,6 +67,74 @@
 
             <a class="btn btn-round btn-send">Send</a>
         </form>
+
+        <div class="ads">
+            <h1 class="article-title">Lorem ipsum dolor sit amet cons ectetur adipisicing elit</h1>
+
+            <div class="article-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do siusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat.
+            </div>
+
+            <div class="article-image"><img src="storage/blogs/ads.png"></div>
+        </div>
     </div>
 
 </div>
+
+<?php
+
+    $range     = 3;
+    $total     = intval($total);
+    $page      = intval($page);
+    $pageIndex = $page - 1;
+
+?>
+
+<?php if ($total > 1) : ?>
+<div class="pagination-container">
+    <ul class="uk-pagination">
+
+        <?php for($i=1;$i<=$total;$i++): ?>
+            <?php if ($i <= ($pageIndex+$range) && $i >= ($pageIndex-$range)): ?>
+
+                <?php if ($i == $page): ?>
+                <li class="uk-active"><span><?=$i?></span></li>
+                <?php else: ?>
+                <li>
+                    <a href="<?= $view->url('@blog/page', ['page' => $i]) ?>"><?=$i?></a>
+                <li>
+                <?php endif; ?>
+
+            <?php elseif($i==1): ?>
+
+                <li>
+                    <a href="<?= $view->url('@blog/page', ['page' => 1]) ?>">1</a>
+                </li>
+
+                <?php if ($page > 6): ?>
+                    <li><span>...</span></li>
+                <?php endif; ?>
+
+            <?php elseif($i==$total-1): ?>
+                <?php if ($i > 4 && $i > $page+$range): ?>
+                    <li><span>...</span></li>
+                <?php endif; ?>
+                <li>
+                    <a href="<?= $view->url('@blog/page', ['page' => $total-1]) ?>"><?=$total-1?></a>
+                </li>
+            <?php elseif($i==$total): ?>
+
+                <li>
+                    <a href="<?= $view->url('@blog/page', ['page' => $total]) ?>"><?=$total?></a>
+                </li>
+
+            <?php endif; ?>
+        <?php endfor; ?>
+
+    </ul>
+
+    <div class="sticker">
+
+    </div>
+</div>
+<?php endif ?>
