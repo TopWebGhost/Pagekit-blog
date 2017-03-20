@@ -7,12 +7,12 @@
                 <div class="left-link link">
                     <p class="date">Aug 5th</p>
                     <p class="content">It is a long established fact that a reader will be distracted by the readable</p>
-                    <a href=""><p class="icon icon-left"></p></a>
+                    <a href="<?= $view->url('@blog/id', ['id' => $post->id - 1]) ?>"><p class="icon icon-left"></p></a>
                 </div>
                 <div class="right-link link">
                     <p class="date">Aug 5th</p>
                     <p class="content">It is a long established fact that a reader will be distracted by the readable</p>
-                    <a href=""><p class="icon icon-right"></p></a>
+                    <a href="<?= $view->url('@blog/id', ['id' => $post->id + 1]) ?>"><p class="icon icon-right"></p></a>
                 </div>
             </div>
 

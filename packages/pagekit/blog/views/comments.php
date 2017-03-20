@@ -6,7 +6,12 @@
 
         <template v-if="comments.length">
 
-            <h2 class="uk-h4">{{ 'Comments (%count%)' | trans {count:count} }}</h2>
+            <div class="header">
+                <h2 class="uk-h4 caption">Comments</h2>
+                <div class="right">
+                    <p class="icon icon-comment"></p><p>{{ '%count%' | trans {count:count} }}</p>
+                </div>
+            </div>
 
             <ul class="uk-comment-list">
                 <comment v-for="comment in tree[0]" :comment="comment"></comment>
@@ -16,7 +21,7 @@
 
         <div class="uk-alert" v-for="message in messages">{{ message }}</div>
 
-        <div v-el:reply v-if="config.enabled"></div>
+        <div class="main-reply reply-container" v-el:reply v-if="config.enabled"></div>
 
         <p v-else>{{ 'Comments are closed.' | trans }}</p>
 
@@ -26,20 +31,23 @@
 
 <script id="comments-item" type="text/template">
 
-    <li :id="'comment-'+comment.id">
+    <li :id="'comment-'+comment.id" class="comment-user">
 
         <article class="uk-comment" :class="{'uk-comment-primary': comment.special}">
 
             <header class="uk-comment-header">
 
-                <img class="uk-comment-avatar" width="40" height="40" :alt="comment.author" v-gravatar="comment.email">
+                <img class="uk-comment-avatar" width="50" height="50" :alt="comment.author" v-gravatar="comment.email">
+                <div class="meta-container">
+                    <h3 class="uk-comment-title">{{ comment.author }}</h3>
 
-                <h3 class="uk-comment-title">{{ comment.author }}</h3>
+                    <p class="uk-comment-meta" v-if="comment.status">
+                        <time :datetime="comment.created">{{comment.created | date 'MMMM d yyyy , hh:mm'}}</time>
+                    </p>
 
-                <p class="uk-comment-meta" v-if="comment.status">
-                    <time :datetime="comment.created">{{ comment.created | relativeDate }}</time>
-                    | <a class="uk-link-muted" :href="permalink" data-uk-smooth-scroll>#</a>
-                </p>
+                </div>
+
+                <span class="reply-btn" v-if="showReplyButton"><a href="#" @click.prevent="replyTo">{{ 'REPLY' | trans }}</a><p class="icon icon-down"></p></span>
 
                 <p class="uk-comment-meta" v-else>{{ 'The comment is awaiting approval.' }}</p>
 
@@ -49,13 +57,12 @@
 
                 <p>{{{ comment.content }}}</p>
 
-                <p v-if="showReplyButton"><a href="#" @click.prevent="replyTo">{{ 'Reply' | trans }}</a></p>
 
             </div>
 
             <div class="uk-alert" v-for="message in comment.messages">{{ message }}</div>
 
-            <div v-el:reply v-if="config.enabled"></div>
+            <div class="reply-container" v-el:reply v-if="config.enabled"></div>
 
         </article>
 
@@ -74,12 +81,14 @@
     <div class="uk-margin-large-top js-comment-reply">
 
         <h2 class="uk-h4">{{ 'Leave a comment' | trans }}</h2>
+        <div class="comment-sticker">
 
+        </div>
         <div class="uk-alert uk-alert-danger" v-show="error">{{ error }}</div>
 
         <form class="uk-form uk-form-stacked" v-if="user.canComment" v-validator="form" @submit.prevent="save | valid">
 
-            <p v-if="user.isAuthenticated">{{ 'Logged in as %name%' | trans {name:user.name} }}</p>
+            <p v-if="user.isAuthenticated"></p>
 
             <template v-else>
 
@@ -104,18 +113,23 @@
             </template>
 
             <div class="uk-form-row">
-                <label for="form-comment" class="uk-form-label">{{ 'Comment' | trans }}</label>
+
                 <div class="uk-form-controls">
-                    <textarea id="form-comment" class="uk-form-width-large" name="content" rows="10" v-model="content" v-validate:required></textarea>
+                    <div class="info-container">
+                        <input type="text" name="name" placeholder="Name *">
+                        <input type="text" name="Email"  placeholder="Email *">
+                    </div>
+                    <input type="text" placeholder="Your comment" id="form-comment" class="uk-form-width-large" name="content" v-model="content" v-validate:required></input>
 
                     <p class="uk-form-help-block uk-text-danger" v-show="form.content.invalid">{{ 'Comment cannot be blank.' | trans }}</p>
                 </div>
             </div>
 
-            <p>
-                <button class="uk-button uk-button-primary" type="submit" accesskey="s">{{ 'Submit' | trans }}</button>
-                <button class="uk-button" accesskey="c" v-if="parent" @click.prevent="cancel">{{ 'Cancel' | trans }}</button>
-            </p>
+            <div class="btn-container">
+                <button class="btn btn-comment" type="submit" accesskey="s">{{ 'Comment' | trans }}</button>
+                <button class="btn btn-comment" accesskey="c" v-if="parent" @click.prevent="cancel">{{ 'Cancel' | trans }}</button>
+                <p v-if="!parent" class="comment-description">By clicking this button, you confirm that you have read our <a href="">terms and conditions</a></p>
+            </div>
 
         </form>
 
