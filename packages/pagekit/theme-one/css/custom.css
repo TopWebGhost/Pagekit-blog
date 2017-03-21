@@ -286,7 +286,7 @@ a, a:hover {
 .blog-detail .blog-detail-stick:before {
     content: '';
     background: #a0a0a0;
-    width: 150px;
+    width: 190px;
     height: 2px;
     float: left;
 }
@@ -588,6 +588,14 @@ a, a:hover {
 .tm-footer .uk-container .socials {
     float: right;
     margin-right: -50px;
+    margin-top: 0;
+}
+.tm-footer .uk-container .link {
+    float: left;
+}
+.tm-footer .uk-container .link li a {
+    color: #414141;
+    font-size: 11px;
 }
 .tm-footer .uk-container .socials li {
     padding-left: 0px;

@@ -130,6 +130,11 @@ class SiteController
             $description = rtrim(mb_substr($description, 0, 150), " \t\n\r\0\x0B.,") . '...';
         }
 
+        $query = Post::where(['status = ?', 'date < ?'], [Post::STATUS_PUBLISHED, new \DateTime])->where(function ($query) {
+            return $query->where('roles IS NULL')->whereInSet('roles', App::user()->roles, false, 'OR');
+        })->related('user');
+        $posts = $query->get();
+
         return [
             '$view' => [
                 'title' => __($post->title),
@@ -157,7 +162,8 @@ class SiteController
                 ]
             ],
             'blog' => $this->blog,
-            'post' => $post
+            'post' => $post,
+            'posts' => $posts
         ];
     }
 }

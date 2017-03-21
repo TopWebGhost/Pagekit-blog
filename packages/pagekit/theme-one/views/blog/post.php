@@ -4,16 +4,24 @@
     <article class="uk-article tm-container-small">
         <div class="blog-header">
             <div class="link-container">
+                <?php
+                      reset($posts); while (key($posts) !== $post->id) { next($posts);}  $prev=prev($posts);
+                      reset($posts); while (key($posts) !== $post->id) { next($posts);}  $next=next($posts);
+                ?>
+                <?php if ($prev !=false): ?>
                 <div class="left-link link">
-                    <p class="date">Aug 5th</p>
-                    <p class="content">It is a long established fact that a reader will be distracted by the readable</p>
-                    <a href="<?= $view->url('@blog/id', ['id' => $post->id - 1]) ?>"><p class="icon icon-left"></p></a>
+                    <?= __('<p class="date">%md%</p>', ['%md%' => '<time datetime="'.$prev->date->format('M jS').'" v-cloak>{{ "'.$prev->date->format('M jS').'" }}</time>' ]) ?>
+                    <p class="content"><?= $prev->title ?></p>
+                    <a href="<?= $view->url('@blog/id', ['id' => $prev->id]) ?>"><p class="icon icon-left"></p></a>
                 </div>
+                <?php endif ?>
+                <?php if ($next !=false): ?>
                 <div class="right-link link">
-                    <p class="date">Aug 5th</p>
-                    <p class="content">It is a long established fact that a reader will be distracted by the readable</p>
-                    <a href="<?= $view->url('@blog/id', ['id' => $post->id + 1]) ?>"><p class="icon icon-right"></p></a>
+                    <?= __('<p class="date">%md%</p>', ['%md%' => '<time datetime="'.$next->date->format('M jS').'" v-cloak>{{ "'.$next->date->format('M jS').'" }}</time>' ]) ?>
+                    <p class="content"><?= $next->title ?></p>
+                    <a href="<?= $view->url('@blog/id', ['id' => $next->id]) ?>"><p class="icon icon-right"></p></a>
                 </div>
+                <?php endif ?>
             </div>
 
         </div>
@@ -32,7 +40,7 @@
             <div class="blog-detail-content">
                 <div class="blog-meta">
                     <p class="date">
-                        <?= __('%date%', ['%date%' => '<time datetime="'.$post->date->format(\DateTime::W3C).'" v-cloak>{{ "'.$post->date->format(\DateTime::W3C).'" | date "longDate" }}</time>' ]) ?>
+                        <?= __('%date%', ['%date%' => '<time datetime="'.$post->date->format('F jS, Y').'" v-cloak>{{ "'.$post->date->format('F jS, Y').'"}}</time>' ]) ?>
                     </p>
                     <p class="author">
                        by <span><?= __('%name%', ['%name%' => $post->user->name]) ?></span>
