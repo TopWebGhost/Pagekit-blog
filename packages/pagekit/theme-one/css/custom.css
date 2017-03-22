@@ -575,12 +575,15 @@ a, a:hover {
     color: #f53812;
 }
 .uk-navbar-content, .uk-navbar-brand, .uk-navbar-toggle {
-    height: 50px;
+    height: 100px;
 }
 .uk-navbar-nav>li>a {
-    height: 50px;
-    line-height: 50px;
-    font-size: 11px;
+    height: 100px;
+    line-height: 20px;
+    font-size: 13px;
+    text-transform: none;
+    padding: 44px 15px 34px 15px;
+    color: #777;
 }
 .tm-footer {
     background: white;
@@ -606,7 +609,7 @@ a, a:hover {
 }
 @media (min-width: 1220px) {
     .tm-navbar .uk-container {
-        max-width: 1000px;
+        max-width: 1170px;
     }
     .tm-footer .uk-container {
         max-width: 900px;
